@@ -6,7 +6,8 @@
   "scripts": {
     "test": "jest",
     "dev": "ts-node-dev --respawn --pretty --transpile-only src/index.ts",
-    "build": "rimraf ./build && tsc"
+    "build": "rimraf ./build && tsc",
+    "start": "npm run build && ts-node build/index.js"
   },
   "keywords": [],
   "author": "Anh Tuan Le",
@@ -27,6 +28,7 @@
     "jest": "^27.0.6",
     "rimraf": "^2.7.1",
     "ts-jest": "^27.0.3",
+    "ts-node": "^9.1.1",
     "ts-node-dev": "^1.1.8",
     "typescript": "^4.3.5"
   }
