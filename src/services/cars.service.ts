@@ -7,7 +7,7 @@ const readFile = utils.promisify(fs.readFile);
 export interface CarsService {
   getCars(): Promise<Car[]>;
   getCar(name: string): Promise<Car>;
-  searchCar(name: string): Promise<Car[]>;
+  searchCar(searchKey: string): Promise<Car[]>;
 }
 
 export class CarsServiceImpl implements CarsService {
@@ -32,11 +32,11 @@ export class CarsServiceImpl implements CarsService {
     }
   }
 
-  public async searchCar(name: string): Promise<Car[]> {
+  public async searchCar(searchKey: string): Promise<Car[]> {
     try {
       const data = await readFile('cars.json', 'utf-8');
       const cars: Car[] = JSON.parse(data);
-      return cars.filter(car => car.Name.includes(name));
+      return cars.filter(car => car.Name.includes(searchKey));
     } catch (err) {
       console.log(`Error when reading data ${err}`);
       throw err;

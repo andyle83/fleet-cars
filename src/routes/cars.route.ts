@@ -7,6 +7,6 @@ const carsController = new CarsController();
 // router configuration
 carsRouter.get('/', carsController.getCars);
 carsRouter.get('/:id', carsController.getCar);
-carsRouter.get('/search/:name', carsController.searchCars);
+carsRouter.get('/search/:key', carsController.searchCars);
 
 export = carsRouter;

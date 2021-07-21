@@ -1,24 +1,31 @@
 import { Request, Response, NextFunction } from 'express';
-import { CarsServiceImpl } from '../services/cars.service';
+import { CarsService, CarsServiceImpl } from '../services/cars.service';
 
 export class CarsController {
+  private _carsService: CarsService;
+
+  constructor() {
+    // TODO: Dependency injection
+    this._carsService = new CarsServiceImpl();
+  }
+
   // getting all cars
-  public async getCars(req: Request, res: Response, next: NextFunction) {
-    const cars = await new CarsServiceImpl().getCars();
+  public getCars = async (req: Request, res: Response, next: NextFunction) => {
+    const cars = await this._carsService.getCars();
     return res.status(200).json(cars);
   };
 
   // get a car by name
-  public async getCar(req: Request, res: Response, next: NextFunction) {
+  public getCar = async (req: Request, res: Response, next: NextFunction) => {
     const name: string = req.params.id;
-    const car = await new CarsServiceImpl().getCar(name);
+    const car = await this._carsService.getCar(name);
     return res.status(200).json(car); 
   }
 
   // search a car by name
-  public async searchCars(req: Request, res: Response, next: NextFunction) {
-    const name: string = req.params.name;
-    const car = await new CarsServiceImpl().searchCar(name);
+  public searchCars = async (req: Request, res: Response, next: NextFunction) => {
+    const searchKey: string = req.params.key;
+    const car = await this._carsService.searchCar(searchKey);
     return res.status(200).json(car); 
   }
 }
