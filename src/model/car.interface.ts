@@ -1,19 +1,11 @@
-export interface BaseCar {
-  name: string;
-  miles_per_gallon: number;
-  cylinders: number;
-  displacement: number;
-  horsepower: number;
-  weight_in_lbs: number;
-  acceleration: number;
-  year: string;
-  origin: string;
-}
-
-export interface Car extends BaseCar {
-  [key: number]: number;
-}
-
-export interface Cars {
-  [key: number]: Car;
+export interface Car {
+  Name: string;
+  Miles_per_Gallon: number;
+  Cylinders: number;
+  Displacement: number;
+  Horsepower: number;
+  Weight_in_lbs: number;
+  Acceleration: number;
+  Year: string;
+  Origin: string;
 }
