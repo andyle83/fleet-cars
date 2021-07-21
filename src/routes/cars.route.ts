@@ -1,11 +1,12 @@
 import express from 'express';
-import controller from '../controllers/cars.controller';
+import { CarsController } from '../controllers/cars.controller';
 
 const carsRouter = express.Router();
+const carsController = new CarsController();
 
 // router configuration
-carsRouter.get('/', controller.getCars);
-carsRouter.get('/:id', controller.getCar);
-carsRouter.get('/search/:name', controller.searchCars);
+carsRouter.get('/', carsController.getCars);
+carsRouter.get('/:id', carsController.getCar);
+carsRouter.get('/search/:name', carsController.searchCars);
 
 export = carsRouter;
