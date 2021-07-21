@@ -15,4 +15,9 @@ describe("CarsServiceImpl", () => {
     expect(car).not.toBeNull();
   })
 
+  test('should throw an exception when reading file error', async () => {
+    const carsService = new CarsServiceImpl('cars1.json');
+    expect(carsService.getCars()).rejects.toThrow();
+  })
+
 })

@@ -11,9 +11,11 @@ export interface CarsService {
 }
 
 export class CarsServiceImpl implements CarsService {
+  constructor(private _fileName: string = 'cars.json', private _encoding: string = 'utf-8') {}
+
   public async getCars(): Promise<Car[]> {
     try {
-      const data = await readFile('cars.json', 'utf-8');
+      const data = await readFile(this._fileName, this._encoding);
       return JSON.parse(data);
     } catch (err) {
       console.log(`Error when reading data ${err}`);
@@ -23,7 +25,7 @@ export class CarsServiceImpl implements CarsService {
   
   public async getCar(name: string): Promise<Car> {
     try {
-      const data = await readFile('cars.json', 'utf-8');
+      const data = await readFile(this._fileName, this._encoding);
       const cars: Car[] = JSON.parse(data);
       return cars.filter(car => car.Name == name)[0];
     } catch (err) {
@@ -34,7 +36,7 @@ export class CarsServiceImpl implements CarsService {
 
   public async searchCar(searchKey: string): Promise<Car[]> {
     try {
-      const data = await readFile('cars.json', 'utf-8');
+      const data = await readFile(this._fileName, this._encoding);
       const cars: Car[] = JSON.parse(data);
       return cars.filter(car => car.Name.includes(searchKey));
     } catch (err) {
