@@ -1,7 +1,7 @@
 {
   "name": "fleet-cars",
   "version": "1.0.0",
-  "description": "fleer car web service api",
+  "description": "fleet car web service api",
   "main": "index.js",
   "scripts": {
     "test": "jest",
