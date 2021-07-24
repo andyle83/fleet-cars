@@ -5,9 +5,9 @@
   "main": "index.js",
   "scripts": {
     "test": "jest",
-    "dev": "ts-node-dev --respawn --pretty --transpile-only src/index.ts",
-    "build": "rimraf ./build && tsc",
-    "start": "npm run build && ts-node build/index.js"
+    "server-dev": "ts-node-dev --respawn --pretty --transpile-only src/server/index.ts",
+    "server-build": "rimraf ./build && tsc",
+    "server-start": "npm run build && ts-node build/server/index.js"
   },
   "keywords": [],
   "author": "Anh Tuan Le",
